@@ -8,10 +8,12 @@ import org.valkyrienskies.core.networking.IVSPacketToClientSender
 import org.valkyrienskies.core.networking.VSPacketRegistry
 import org.valkyrienskies.core.networking.impl.VSPacketSetupFastNetwork
 import org.valkyrienskies.core.networking.impl.VSPacketShipDataList
+import org.valkyrienskies.core.networking.impl.VSPacketTransform
 import org.valkyrienskies.core.networking.udp.VSUdpClient
 import org.valkyrienskies.core.pipelines.VSPipeline
 import org.valkyrienskies.mod.common.networking.impl.VSPacketSetupUDPClientHandler
 import org.valkyrienskies.mod.common.networking.impl.VSPacketShipDataClientHandler
+import org.valkyrienskies.mod.common.networking.impl.VSPacketTransformClientHandler
 
 /**
  * Registers the [IVSPacket]s, and stores [IVSPacketToClientSender]
@@ -20,9 +22,9 @@ import org.valkyrienskies.mod.common.networking.impl.VSPacketShipDataClientHandl
 object VSNetworking {
 
     private val vsPacketRegistry = VSPacketRegistry<ServerPlayerEntity>()
-    lateinit var shipDataPacketToClientSender: IVSPacketToClientSender<ServerPlayerEntity>
-    lateinit var fastToClientSender: IVSPacketToClientSender<ServerPlayerEntity>
-    lateinit var fastClient: VSUdpClient
+    lateinit var shipDataPacketToClientSender: IVSPacketToClientSender<ServerPlayerEntity> // Server only
+    lateinit var fastToClientSender: IVSPacketToClientSender<ServerPlayerEntity> // Server only
+    lateinit var fastClient: VSUdpClient // Client only
     var usesUdp = false
 
     internal fun registerVSPackets() {
@@ -37,6 +39,13 @@ object VSNetworking {
             VSPacketSetupFastNetwork::class.java,
             { VSPacketSetupFastNetwork.createEmpty() },
             VSPacketSetupUDPClientHandler,
+            null
+        )
+
+        vsPacketRegistry.registerVSPacket(
+            VSPacketTransform::class.java,
+            { VSPacketTransform.createEmpty() },
+            VSPacketTransformClientHandler,
             null
         )
     }

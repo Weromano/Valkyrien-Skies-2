@@ -12,9 +12,8 @@ object VSPacketSetupUDPClientHandler : IVSPacketClientHandler {
 
         if (!vsPacket.noUdp) {
             val address = TODO("Get current minecraft servers address")
+            VSNetworking.usesUdp = true
             VSNetworking.fastClient = VSUdpClient(address)
-        } else {
-            TODO("Fallback to TCP")
         }
     }
 }
