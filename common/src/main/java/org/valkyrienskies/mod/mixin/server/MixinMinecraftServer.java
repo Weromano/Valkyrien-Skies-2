@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.valkyrienskies.core.pipelines.VSPipeline;
+import org.valkyrienskies.mod.common.VSNetworking;
 import org.valkyrienskies.mod.event.RegistryEvents;
 import org.valkyrienskies.physics_api_krunch.KrunchBootstrap;
 
@@ -20,6 +21,7 @@ public class MixinMinecraftServer {
         KrunchBootstrap.INSTANCE.loadNativeBinaries();
         VSPipeline.Companion.createVSPipeline();
         RegistryEvents.registriesAreComplete();
+        VSNetworking.INSTANCE.setupServer();
     }
 
     @Inject(

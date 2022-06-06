@@ -8,7 +8,6 @@ import org.valkyrienskies.core.networking.VSPacketRegistry
 import org.valkyrienskies.core.networking.impl.VSPacketSetupUDP
 import org.valkyrienskies.core.networking.impl.VSPacketShipDataList
 import org.valkyrienskies.core.networking.udp.VSUdpClient
-import org.valkyrienskies.core.networking.udp.VSUdpServer
 import org.valkyrienskies.mod.common.networking.impl.VSPacketSetupUDPClientHandler
 import org.valkyrienskies.mod.common.networking.impl.VSPacketShipDataClientHandler
 
@@ -20,8 +19,8 @@ object VSNetworking {
 
     private val vsPacketRegistry = VSPacketRegistry<ServerPlayerEntity>()
     lateinit var shipDataPacketToClientSender: IVSPacketToClientSender<ServerPlayerEntity>
-    lateinit var udpSender: VSUdpServer<ServerPlayerEntity>
-    lateinit var udpClient: VSUdpClient
+    lateinit var fastToClientSender: IVSPacketToClientSender<ServerPlayerEntity>
+    lateinit var fastClient: VSUdpClient
 
     internal fun registerVSPackets() {
         vsPacketRegistry.registerVSPacket(
@@ -57,5 +56,9 @@ object VSNetworking {
 
     fun readVSPacket(byteBuf: ByteBuf): IVSPacket {
         return vsPacketRegistry.readVSPacket(byteBuf)
+    }
+
+    fun setupServer() {
+        // VSPipeline.getVSPipeline().configureNetwork(fastToClientSender as IVSPacketToClientSender<IPlayer>)
     }
 }
