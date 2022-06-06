@@ -2,12 +2,14 @@ package org.valkyrienskies.mod.common
 
 import io.netty.buffer.ByteBuf
 import net.minecraft.server.network.ServerPlayerEntity
+import org.valkyrienskies.core.game.IPlayer
 import org.valkyrienskies.core.networking.IVSPacket
 import org.valkyrienskies.core.networking.IVSPacketToClientSender
 import org.valkyrienskies.core.networking.VSPacketRegistry
-import org.valkyrienskies.core.networking.impl.VSPacketSetupUDP
+import org.valkyrienskies.core.networking.impl.VSPacketSetupFastNetwork
 import org.valkyrienskies.core.networking.impl.VSPacketShipDataList
 import org.valkyrienskies.core.networking.udp.VSUdpClient
+import org.valkyrienskies.core.pipelines.VSPipeline
 import org.valkyrienskies.mod.common.networking.impl.VSPacketSetupUDPClientHandler
 import org.valkyrienskies.mod.common.networking.impl.VSPacketShipDataClientHandler
 
@@ -21,6 +23,7 @@ object VSNetworking {
     lateinit var shipDataPacketToClientSender: IVSPacketToClientSender<ServerPlayerEntity>
     lateinit var fastToClientSender: IVSPacketToClientSender<ServerPlayerEntity>
     lateinit var fastClient: VSUdpClient
+    var usesUdp = false
 
     internal fun registerVSPackets() {
         vsPacketRegistry.registerVSPacket(
@@ -31,8 +34,8 @@ object VSNetworking {
         )
 
         vsPacketRegistry.registerVSPacket(
-            VSPacketSetupUDP::class.java,
-            { VSPacketSetupUDP.createEmpty() },
+            VSPacketSetupFastNetwork::class.java,
+            { VSPacketSetupFastNetwork.createEmpty() },
             VSPacketSetupUDPClientHandler,
             null
         )
@@ -59,6 +62,10 @@ object VSNetworking {
     }
 
     fun setupServer() {
-        // VSPipeline.getVSPipeline().configureNetwork(fastToClientSender as IVSPacketToClientSender<IPlayer>)
+        if (!this::fastToClientSender.isInitialized) {
+            fastToClientSender = shipDataPacketToClientSender
+        } else usesUdp = true
+
+        VSPipeline.getVSPipeline().configureNetwork(fastToClientSender as IVSPacketToClientSender<IPlayer>)
     }
 }
