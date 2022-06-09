@@ -4,6 +4,10 @@
     "mass": 800.0
   },
   {
+    "block": "minecraft:lectern",
+    "mass": 600.0
+  },
+  {
     "block": "minecraft:furnace",
     "mass": 2800.0
   },
