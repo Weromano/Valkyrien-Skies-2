@@ -32,8 +32,12 @@
     "mass": 7000.0
   },
   {
-    "tag": "minecraft:cauldrons",
-    "mass": 5000.0
+    "block": "minecraft:cauldron",
+    "mass": 5500.0
+  },
+  {
+    "block": "minecraft:water_cauldron",
+    "mass": 6000.0
   },
   {
     "block": "minecraft:brewing_stand",
