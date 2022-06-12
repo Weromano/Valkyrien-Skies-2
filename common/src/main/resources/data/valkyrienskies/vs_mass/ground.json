@@ -93,7 +93,7 @@
   },
   {
     "block": "minecraft:magma_block",
-    "mass": 3200.0
+    "mass": 2800.0
   },
   {
     "block": "minecraft:netherrack",
@@ -101,11 +101,11 @@
   },
   {
     "block": "minecraft:obsidian",
-    "mass": 3200.0
+    "mass": 2600.0
   },
   {
     "block": "minecraft:crying_obsidian",
-    "mass": 3200.0
+    "mass": 2600.0
   },
   {
     "block": "minecraft:sandstone",
