@@ -41,11 +41,11 @@
   },
   {
     "block": "minecraft:piston_head",
-    "mass": 0.0
+    "mass": 0.1
   },
   {
     "block": "minecraft:moving_piston",
-    "mass": 0.0
+    "mass": 0.1
   },
   {
     "block": "minecraft:tnt",
@@ -97,7 +97,7 @@
   },
   {
     "block": "minecraft:tripwire",
-    "mass": 0.0
+    "mass": 100.0
   },
   {
     "block": "minecraft:daylight_detector",
@@ -145,11 +145,11 @@
   },
   {
     "tag": "minecraft:fence_gates",
-    "mass": 20.0
+    "mass": 100.0
   },
   {
     "tag": "minecraft:wooden_doors",
-    "mass": 25.0
+    "mass": 50.0
   },
   {
     "block": "minecraft:iron_door",
@@ -157,7 +157,7 @@
   },
   {
     "tag": "minecraft:wooden_trapdoors",
-    "mass": 25.0
+    "mass": 50.0
   },
   {
     "block": "minecraft:iron_trapdoor",
