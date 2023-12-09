@@ -85,17 +85,12 @@
     "friction": 0.6
   },
   {
-    "block": "minecraft:cut_sandstone_slab",
+    "block": "minecraft:red_sandstone_slab",
     "mass": 1150.0,
     "friction": 0.6
   },
   {
-    "block": "minecraft:smooth_sandstone_slab",
-    "mass": 1150.0,
-    "friction": 0.5
-  },
-  {
-    "block": "minecraft:red_sandstone_slab",
+    "block": "minecraft:cut_sandstone_slab",
     "mass": 1150.0,
     "friction": 0.6
   },
@@ -103,6 +98,11 @@
     "block": "minecraft:cut_red_sandstone_slab",
     "mass": 1150.0,
     "friction": 0.6
+  },
+  {
+    "block": "minecraft:smooth_sandstone_slab",
+    "mass": 1150.0,
+    "friction": 0.5
   },
   {
     "block": "minecraft:smooth_red_sandstone_slab",
@@ -415,6 +415,16 @@
     "friction": 0.3
   },
   {
+    "block": "minecraft:cut_sandstone",
+    "mass": 2300.0,
+    "friction": 0.6
+  },
+  {
+    "block": "minecraft:cut_red_sandstone",
+    "mass": 2300.0,
+    "friction": 0.6
+  },
+  {
     "block": "minecraft:smooth_sandstone",
     "mass": 2300.0,
     "friction": 0.5
@@ -450,6 +460,11 @@
     "friction": 0.6
   },
   {
+    "block": "minecraft:chiseled_red_sandstone",
+    "mass": 2300.0,
+    "friction": 0.6
+  },
+  {
     "block": "minecraft:chiseled_stone_bricks",
     "mass": 2600.0,
     "friction": 0.6
@@ -462,11 +477,6 @@
   {
     "block": "minecraft:chiseled_quartz_block",
     "mass": 2320.0,
-    "friction": 0.6
-  },
-  {
-    "block": "minecraft:chiseled_red_sandstone",
-    "mass": 2300.0,
     "friction": 0.6
   },
   {
